@@ -27,7 +27,8 @@ def register(request):
         )
         user.set_password(password)
         user.save()
-        return redirect("/login_page/")
+        messages.info(request,"registred successfully!")
+        return redirect('login_page')
 
     return render(request, "register.html")
 
