@@ -35,7 +35,32 @@ def buy_product_list(request):
     
     return render(request,"buy_product_list.html",context)
 
-#def buy(request,id):
-    item=get_object_or_404(id=id)
+def delete_item(request,id):
+    try:
+      queryset=items.objects.get(id=id)
+      queryset.delete()
+    except :
+        print("exceptation raise")
+    return redirect('adding_item')
+
+def update(request,id):
+    queryset=items.objects.get(id=id)
+    if request.method=="POST":
+        name=request.POST.get("name")
+        price=request.POST.get("price")
+        file=request.FILES.get("file")
+
+
+        queryset.name=name
+        queryset.price=price
+        if file:
+            queryset.file=file
+
+        queryset.save()
+        return redirect('adding_item')
+    return render (request,'update.html')
+
+
+
 
     

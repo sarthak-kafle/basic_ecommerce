@@ -29,6 +29,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path ("adding_item/",adding_item,name="adding_item"),
     path("buy_product_list/",buy_product_list,name="buy_product_list"),
+    path("delete_item/<int:id>/", delete_item, name="delete_item"),
+    path("update/<int:id>/",update,name="update"),
 
 
 ]

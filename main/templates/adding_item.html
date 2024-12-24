@@ -51,6 +51,13 @@
                 <td>
                     <img src="{{ item.file.url }}" alt="Image for {{ item.name }}" width="100">
                 </td>
+                <td>
+                    <a href="{% url 'delete_item' item.id %}" class="btn btn-danger">Delete</a>
+
+                </td>
+                <td>
+                    <a href="{% url 'update' item.id %}" class="btn btn-danger">update</a>
+                </td>
             </tr>
             {%endfor %}
         </tbody>

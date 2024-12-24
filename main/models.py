@@ -1,8 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class items(models.Model):
-    name=models.CharField(max_length=20)
+   
+    name = models.CharField(max_length=20, default="Default Name")
+
     price=models.IntegerField()
     file=models.ImageField(upload_to='product_images/')
     
