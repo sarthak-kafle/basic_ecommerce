@@ -18,12 +18,19 @@ from django.contrib import admin
 from django.urls import path
 from  login.views import *
 from main.views import *
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('',register,name="register" ),
     path('register/', register, name='register'),
     path('login_page/', login_page, name='login_page'),
     path("after_login/",after_login,name="after_login"),
-     path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path ("adding_item/",adding_item,name="adding_item"),
+    path("buy_product_list/",buy_product_list,name="buy_product_list"),
+
 
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

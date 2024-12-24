@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adding_item</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'table.css'%}">
+</head>
+<body>
+    
+    <h2>Add product </h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Shoe Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+    
+        <label for="price">Price:</label>
+        <input id="price" name="price" required>
+        <br><br>
+    
+        <label for="file">Upload Image:</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+        <br><br>
+    
+        <button type="submit">Submit</button>
+    </form>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>Product List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>shose Name</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example Row 1 -->
+            {%for item in items%}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>
+                    <img src="{{ item.file.url }}" alt="Image for {{ item.name }}" width="100">
+                </td>
+            </tr>
+            {%endfor %}
+        </tbody>
+    </table>
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@ from django.db import models
 class items(models.Model):
     name=models.CharField(max_length=20)
     price=models.IntegerField()
-    file=models.ImageField()
+    file=models.ImageField(upload_to='product_images/')
     
     def __str__(self):
         return self.name
