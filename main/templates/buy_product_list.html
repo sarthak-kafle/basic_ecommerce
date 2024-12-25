@@ -47,7 +47,8 @@
                 <td>
                     <img src="{{ item.file.url }}" alt="Image for {{ item.name }}" width="100">
                 </td>
-                <td><button>Add chart</button>
+                <td>
+                    <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark">Add cart</a>
                 </td>
             </tr>
             {%endfor %}

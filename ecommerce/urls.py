@@ -20,6 +20,7 @@ from  login.views import *
 from main.views import *
 from django.conf.urls.static import static
 from django.conf import settings
+from cart.views import *
 
 urlpatterns = [
     path('',register,name="register" ),
@@ -31,7 +32,11 @@ urlpatterns = [
     path("buy_product_list/",buy_product_list,name="buy_product_list"),
     path("delete_item/<int:id>/", delete_item, name="delete_item"),
     path("update/<int:id>/",update,name="update"),
-
+    path('cart_add/',cart_add,name="cart_add"),
+    path('cart_delete/',cart_delete,name="cart_delete"),
+    path('cart_update/',cart_update,name="cart_update"),
+    path('cart_summary/',cart_summary,name="cart_summary"),
+    
 
 ]
 if settings.DEBUG:
