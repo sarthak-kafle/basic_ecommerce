@@ -38,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Example Row 1 -->
+            
             {%for item in items%}
             <tr>
                 <td>{{forloop.counter}}</td>
@@ -47,8 +47,12 @@
                 <td>
                     <img src="{{ item.file.url }}" alt="Image for {{ item.name }}" width="100">
                 </td>
-                <td>
-                    <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark">Add cart</a>
+               <td>
+                   
+                <form action="{% url 'cart_summary' item.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
+                </form>                                 
                 </td>
             </tr>
             {%endfor %}

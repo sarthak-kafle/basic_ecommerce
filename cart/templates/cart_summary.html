@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'table.css'%}">
     <title>cart_summary</title>
 </head>
-<body>
+<body><br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>shose Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% if users %}
+            <td>{{forloop.counter}}</td>
+            <td>{{users.name}}</td>
+            <td>{{users.price}}</td>
+            <td>
+                <img src="{{ users.file.url }}" alt="Image for {{ users.name }}" width="100">
+            </td>
+           
+           {%endif%}
+           
+           
+        </tbody>
+    </table>
+
     
 </body>
 </html>

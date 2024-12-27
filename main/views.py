@@ -29,7 +29,8 @@ def buy_product_list(request):
     
     
     querryset=items.objects.all()
-    if request.GET.get('search'):# recomendation of search 
+    search_query=request.GET.get('search')
+    if  search_query:# recomendation of search 
         querryset=querryset.filter(name__icontains =request.GET.get('search'))
     context={'items':querryset}
     
