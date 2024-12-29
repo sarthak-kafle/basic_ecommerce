@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Summary</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'table.css'%}">
-    <title>cart_summary</title>
+    <link rel="stylesheet" href="{% static 'table.css' %}">
 </head>
-<body><br><br>
+<body>
+    <h1>Cart Summary</h1>
+    <br><br>
     <table>
         <thead>
             <tr>
-                <th>SN</th>
-                <th>shose Name</th>
+                <th>Shoe Name</th>
                 <th>Price</th>
                 <th>Image</th>
-                
             </tr>
         </thead>
         <tbody>
-            {% if users %}
-            <td>{{forloop.counter}}</td>
-            <td>{{users.name}}</td>
-            <td>{{users.price}}</td>
-            <td>
-                <img src="{{ users.file.url }}" alt="Image for {{ users.name }}" width="100">
-            </td>
-           
-           {%endif%}
-           
-           
+            {% if cart and cart|length > 0 %}
+                {% for item in cart %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>
+                        <img src="{{ item.file }}" alt="Image for {{ item.name }}" width="100">
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">Your cart is empty.</td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
-
-    
 </body>
 </html>

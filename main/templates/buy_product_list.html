@@ -4,59 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy</title>
-    {% load static%}
-    <link rel="stylesheet" href="{%static 'buy.css'%}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'buy.css' %}">
 </head>
 <body>
-    <strong>you can buy all the products in the list </strong>
+    <strong>You can buy all the products in the list</strong>
     
     <h2>Product List</h2>
-</form>
-<hr>
-<div class ="mt-5">
- <div class ="mx-auto col-6">
-   <form>
-   <div class="mb-3">
-     <label for="name" class="form-label">search receipe </label>
-     <input name="search"  class="form-control">
-     
-
-   </div>
-   <div>
-     <button type="submit" class="btn btn-success">search</button>
-   </div>
-   </form>
-   <br><br>
-    <table>
-        <thead>
-            <tr>
-                <th>SN</th>
-                <th>shose Name</th>
-                <th>Price</th>
-                <th>Image</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            
-            {%for item in items%}
-            <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.price}}</td>
-                <td>
-                    <img src="{{ item.file.url }}" alt="Image for {{ item.name }}" width="100">
-                </td>
-               <td>
-                   
-                <form action="{% url 'cart_summary' item.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
-                </form>                                 
-                </td>
-            </tr>
-            {%endfor %}
-        </tbody>
-    </table>
+    <hr>
+    <div class="mt-5">
+        <div class="mx-auto col-6">
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Search Recipe</label>
+                    <input name="search" class="form-control">
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+              
+                <a href="{% url 'view_cart' %}">View Cart</a> <!-- This assumes no specific item is needed for View Cart -->
+            </form>
+            <br><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Shoe Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>
+                            <img src="{{ item.file.url }}" alt="Image for {{ item.name }}" width="100">
+                        </td>
+                        <td>
+                           
+                            <form action="{% url 'cart_summary' item.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
