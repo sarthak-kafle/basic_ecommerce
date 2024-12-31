@@ -32,11 +32,11 @@ urlpatterns = [
     path("buy_product_list/",buy_product_list,name="buy_product_list"),
     path("delete_item/<int:id>/", delete_item, name="delete_item"),
     path("update/<int:id>/",update,name="update"),
-    path('cart_add/',cart_add,name="cart_add"),
-    path('cart_delete/',cart_delete,name="cart_delete"),
-    path('cart_update/',cart_update,name="cart_update"),
     path('cart_summary/<int:id>/',cart_summary,name="cart_summary"),
     path('view_cart/',view_cart,name="view_cart"),
+    path('delete_cart_item/<str:item_id>/',delete_cart_item,name="delete_cart_item"),
+
+
     
 
 ]

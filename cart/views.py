@@ -37,11 +37,16 @@ def view_cart(request):
 
    return render(request,"view_cart.html",context)
 
+def delete_cart_item(request,item_id):
+    cart=request.session.get('cart',[])
+    for item in cart:
+       if (item.get('session_key')==str(item_id)): # session key is used for getting the session key of the item that we want ot delete because in data-base model django dont provide the auto id fot the every session key so we use the (session_key) for finding what item to delete
+            
+            cart.remove(item)
+            request.session['cart']=cart # updating the session data after deleting the cart_item 
+            return redirect("/view_cart/")
+    
+       
+    
 
-def cart_add(request):
-    pass
-def cart_delete(request):
-    pass
-def cart_update(request):
-    pass 
-
+    return redirect("/view_cart/")

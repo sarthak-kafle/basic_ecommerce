@@ -15,6 +15,7 @@
                 <th>SN</th>
                 <th>Shoe Name</th>
                 <th>Price</th>
+            
             </tr>
         </thead>
         <tbody>
@@ -23,12 +24,18 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.price }}</td>
+                    <td>
+                        <a href="{% url 'delete_cart_item' item.session_key %}" class="btn btn-success">Delete</a>
+                    </td>
+        
+                
             </tr>
-            {% endfor %}
+            {% endfor %}    
+            
         </tbody>
     </table>
     <br>
-    <p>Total{{total}}</p>
+    <p>Total={{total}}</p>
     
 </body>
 </html>
