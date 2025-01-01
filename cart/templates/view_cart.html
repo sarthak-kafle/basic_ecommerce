@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%load static %}
-    <link rel="stylesheet" href="{% static 'table.css'%}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'table.css' %}">
     <title>View Cart</title>
 </head>
 <body>
@@ -15,27 +15,26 @@
                 <th>SN</th>
                 <th>Shoe Name</th>
                 <th>Price</th>
-            
             </tr>
         </thead>
         <tbody>
             {% for item in cart %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.price }}</td>
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price }}</td>
                     <td>
-                        <a href="{% url 'delete_cart_item' item.session_key %}" class="btn btn-success">Delete</a>
+                        {% if item.session_key %}
+                            <a href="{% url 'delete_cart_item' item.session_key %}" class="btn btn-success">Delete</a>
+                        {% else %}
+                            <span class="text-danger">Invalid Session Key</span>
+                        {% endif %}
                     </td>
-        
-                
-            </tr>
-            {% endfor %}    
-            
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
     <br>
-    <p>Total={{total}}</p>
-    
+    <p>Total = {{ total }}</p>
 </body>
 </html>

@@ -34,7 +34,7 @@ urlpatterns = [
     path("update/<int:id>/",update,name="update"),
     path('cart_summary/<int:id>/',cart_summary,name="cart_summary"),
     path('view_cart/',view_cart,name="view_cart"),
-    path('delete_cart_item/<str:item_id>/',delete_cart_item,name="delete_cart_item"),
+    path('delete_cart_item/<str:item_id>/', delete_cart_item, name='delete_cart_item'),
 
 
     

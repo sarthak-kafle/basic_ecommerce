@@ -18,6 +18,7 @@ def cart_summary(request,id):
        {
               "name":user.name,
               "price":user.price,
+              "session_key":str(user.id)
        }
 
      )
