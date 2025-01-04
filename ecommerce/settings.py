@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-additionalapp=['login','main','cart']
+additionalapp=['login','main','cart','esewa']
 INSTALLED_APPS=INSTALLED_APPS+additionalapp
 
 
