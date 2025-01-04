@@ -5,7 +5,7 @@ from main.models import *
 # Create your models here.
 class order(models.Model):
     name=models.CharField(max_length=100)
-    payment_id=models.CharField(maxlength=100,unique=True)
+    payment_id=models.CharField(max_length=100,unique=True)
     is_paid=models.BooleanField(default=False)
     total_amt=models.IntegerField()
     status=models.CharField(max_length=40,default='pending')
