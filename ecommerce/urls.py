@@ -37,6 +37,8 @@ urlpatterns = [
     path('view_cart/',view_cart,name="view_cart"),
     path('delete_cart_item/<str:item_id>/', delete_cart_item, name='delete_cart_item'),
     path('place_order/',place_order,name='place_order'),
+    path('place_order/payment_success/',payment_success,name='payment_success'), # these payment_success is used because the success url is triggered in place_order function whrn the api of the esewa redirect to the success page after validating the transaction
+    path('payment_failure/',payment_failure,name='payment_failure'),
     
 
     

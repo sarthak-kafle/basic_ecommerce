@@ -36,5 +36,20 @@
     </table>
     <br>
     <p>Total = {{ total }}</p>
+     <br><br><br>
+     <strong>payment with esewa </strong>
+
+    <form action="{% url 'place_order' %}" method="POST">
+        {% csrf_token%}
+        <button type="submit " class="btn btn-primary"> payment with esewa</button>
+
+    </form>
+    <br>
+    <p>
+        <a href="{% url 'buy_product_list' %}"> back to product list</a>
+
+    </p>
+
+     
 </body>
 </html>
